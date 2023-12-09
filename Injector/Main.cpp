@@ -18,8 +18,10 @@ int main() {
 
 	printf("[+] %s Handle: %p\n", ProcName, hProc);
 
-	if (!Inject(hProc, DLLAbsolutePath.string().c_str()))
+	if (!Inject(hProc, DLLAbsolutePath.string().c_str())) {
+		CloseHandle(hProc);
 		return 0;
+	}
 
 	printf("[+] Injected!\n");
 
