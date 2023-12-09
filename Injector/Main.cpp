@@ -1,5 +1,4 @@
 ﻿#include "Injector.h"
-#include "Injector.h"
 
 const char* DLLName = "Payload.dll";
 const char* ProcName = "Target.exe";
