@@ -36,7 +36,7 @@ HANDLE OpenProc(const char* ProcName) {
 
 	printf("[+] %s PID: %d\n", ProcName, PID);
 
-	HANDLE hProc = OpenProcess(PROCESS_ALL_ACCESS, FALSE, PID);
+	HANDLE hProc = OpenProcess(PROCESS_CREATE_THREAD | PROCESS_QUERY_INFORMATION | PROCESS_VM_OPERATION | PROCESS_VM_WRITE | PROCESS_VM_READ, FALSE, PID);
 	if (!hProc) {
 		printf("[-] OpenProcess error: 0x%X\n", GetLastError());
 		system("pause");
