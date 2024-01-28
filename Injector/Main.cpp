@@ -1,9 +1,22 @@
 ﻿#include "Injector.h"
 
-const char* DLLName = "Payload.dll";
 const char* ProcName = "Target.exe";
+const char* DLLName = "Payload.dll";
 
-int main() {
+int main(int argc, char* argv[]) {
+	if (argc == 5) {
+		for (int i = 0; i < argc; i++) {
+			if (!strcmp(argv[i], "-proc")) {
+				ProcName = argv[i + 1];
+				continue;
+			}
+			if (!strcmp(argv[i], "-dll")) {
+				DLLName = argv[i + 1];
+				continue;
+			}
+		}
+	}
+
 	std::filesystem::path DLLAbsolutePath = std::filesystem::absolute(DLLName);
 
 	if (!std::filesystem::exists(DLLAbsolutePath)) {
