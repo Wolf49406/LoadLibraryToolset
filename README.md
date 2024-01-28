@@ -19,7 +19,8 @@
 - Done!
 
 ## Arguments:
-You can set `ProcName` and `DLLName` with `-proc` and `-dll` arguments (ex: `Injector.exe -proc Explorer.exe -dll Payload.dll`)  
+You can set `ProcName` and `DLLName` with `-proc` and `-dll` arguments  
+(ex: `Injector.exe -proc Explorer.exe -dll Payload.dll`)  
 Arguments are case INsensitive!
 
 ## Notice:
