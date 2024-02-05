@@ -1,6 +1,8 @@
 # LoadLibraryToolset
  Everything you need to play with LoadLibrary injection
 
+ [![MSBuild](https://github.com/Wolf49406/LoadLibraryToolset/actions/workflows/msbuild.yml/badge.svg?branch=main)](https://github.com/Wolf49406/LoadLibraryToolset/actions/workflows/msbuild.yml)
+
 ## Includes:
 - Injector.exe
 - Payload.dll
