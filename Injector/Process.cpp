@@ -1,10 +1,5 @@
 #include "Injector.h"
 
-static std::string str_tolower(std::string s) {
-	std::transform(s.begin(), s.end(), s.begin(), [](unsigned char c) { return std::tolower(c); });
-	return s;
-}
-
 int GetPIDByName(const char* ProcName) {
 	PROCESSENTRY32 PE32{ 0 };
 	PE32.dwSize = sizeof(PE32);
@@ -19,9 +14,7 @@ int GetPIDByName(const char* ProcName) {
 	DWORD PID = 0;
 	BOOL bRet = Process32FirstW(hSnap, &PE32);
 	while (bRet) {
-		std::string lowerProcName = str_tolower(ProcName);
-
-		if (!strcmp(lowerProcName.c_str(), _bstr_t(PE32.szExeFile))) {
+		if (!strcmp(ProcName, _bstr_t(PE32.szExeFile))) {
 			PID = PE32.th32ProcessID;
 			break;
 		}
@@ -37,7 +30,7 @@ int GetPIDByName(const char* ProcName) {
 HANDLE OpenProc(const char* ProcName) {
 	int PID = GetPIDByName(ProcName);
 	if (PID == 0) {
-		printf("[-] Error: Can't get %s PID\n", ProcName);
+		printf("[-] Can't get %s PID\n", ProcName);
 		system("pause");
 		return nullptr;
 	}
